@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Comparison of Progression Plans</title>
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic">
+    <script type="text/javascript" src="/static/lib/d3/d3.v3.js"/></script>
+    <script type="text/javascript" src="/static/lib/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/static/lib/lodash/lodash.js"/></script>
+    <script type="text/javascript" src="/static/js/util.js"></script>
+    <script type="text/javascript" src="/static/js/vis.js"></script>
+    <script type="text/javascript" src="/static/js/grid.js"></script>
+    <script type="text/javascript" src="code.js"></script>
+  </head>
+  <body>
+    <h1>Comparison of Progression Plans</h1>
+    <div id="controls">
+      <h3>Controls</h3>
+      <p><label for="sort-fn">Sort by:</label></p>
+      <select id="sort-fn" size="5">
+        <option value="default" selected>Default</option>
+        <option value="alpha">Alphabetical</option>
+        <option value="intro0">#1 Intro Order</option>
+        <option value="intro1">#2 Intro Order</option>
+        <option value="cluster">Clusters</option>
+      </select>
+      <p><label for="select-fn">Filter to:</label></p>
+      <select id="select-fn" multiple></select>
+      <p><button id='clear-select-button'>Clear Filters</button></p>
+    </div>
+    <div id="grid-container">
+      <h3 id='title-0'>Progression 0</h3>
+      <div><svg id="grid-0" width="1" height="1"></svg></div>
+      <div><svg id="bar-0" width="1" height="1"></svg></div>
+      <h3 id='title-1'>Progression 1</h3>
+      <div><svg id="grid-1" width="1" height="1"></svg></div>
+      <div><svg id="bar-1" width="1" height="1"></svg></div>
+    </div>
+    <div id="plot-container">
+      <h3>Projection</h3>
+      <div><svg id="plot" width="1" height="1"></svg></div>
+    </div>
+  </body>
+</html>
+

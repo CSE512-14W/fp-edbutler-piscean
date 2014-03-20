@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Progression Visualization Test Listing</title>
+  </head>
+  <body>
+    <h2>Pick a preset</h2>
+    <ul>
+      {% for url in bookmarks -%}
+      <li><a href="{{url.url}}">{{url.linktext}}</a></li>
+      {%- endfor %}
+    </ul>
+
+    <h2>Choose everything manually</h2>
+    <ul>
+      {% for url in dirs -%}
+      <li><a href="{{url}}">{{url}}</a></li>
+      {%- endfor %}
+    </ul>
+  </body>
+</html>
+
