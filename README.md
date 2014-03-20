@@ -1,6 +1,6 @@
 Visualizing Progressions for Education and Game Design
 ======================================================
-Eric Butler, Rahul Banerjee
+Eric Butler, Rahul Banerjee {edbutler,piscean}@uw.edu
 
 This project is an interactive visualization of _progressions_ from games. It allows for two progressions from the same game to be compared.
 
