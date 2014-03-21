@@ -106,7 +106,7 @@ Understanding the structure of these progressions and their properties is crucia
 One important task is comparing the quality of two different progressions.
 Designs\todo{?} may be an in-development version of a game to a previous iteration, and deciding between two possible changes.
 In research settings, when developing systems to automatically generate progressions, it can be beneficial, for example, to compare the output of the algorithm to a human-designed progression.
-While their has been a lot of research into how to visualize player data~\cite{wallner2013visualization}, our task is slightly different:
+While there has been a lot of research into how to visualize player data~\cite{wallner2013visualization}, our task is slightly different:
 we are focused on looking at the static design space of the game, without any player data.
 There are several reasons designers may wish to analyze the design space of their game independent of player data.
 Often, early in the design process, developers do not have access to player data, or such data is too expensive to gather.
@@ -124,7 +124,7 @@ There are several activities we might want a useful progression comparison tool 
 \item What is the order concepts are introduced in two different progressions?
 \item How are particular concepts used in combination?
 \item How does the complexity change over the progression?
-\item How much of the ``design space'' is covered by once concept but not another; are there are there concepts or combinations that one of the progressions neglects?
+\item How much of the ``design space'' is covered by one progression but not another; are there concepts or combinations that one of the progressions neglects?
 \end{compactitem}
 
 Little work exists in visualizing this specific domain.
@@ -134,7 +134,7 @@ A good demonstration of how the table visualization fails to scale to a large nu
 Though the ordering of concepts is clear, how they are combined is not, and viewing two of these charts together may yield little immediate insight as to their differences.
 
 In this work we present a novel visualization system for comparing two different progressions to each other.
-We evaluate its usefulness through informal, anecdotal case studies using datasets of progressions from the game \emph{Refraction}, and educational math game developed by our group.
+We evaluate its usefulness through informal, anecdotal case studies using datasets of progressions from the game \emph{Refraction}, an educational math game developed by our group.
 We discuss insights provided by this visualization tool that are difficult to notice without it.
 
 %Tools and visualizations specifically designed for the visualization and comparison of two different progressions are not well-studied.
@@ -158,21 +158,21 @@ We discuss insights provided by this visualization tool that are difficult to no
 
 \section{Related Work}
 
-The need to visualize sequences of values occur in a wide range of other domains, such stock market data or medical health records.
+The need to visualize sequences of values occurs in a wide range of other domains, such as stock market data or medical health records.
 There exist several techniques for visualizing scalar values that vary over time, like line and bar charts~\cite{Playfair2005}.
 When comparing multiple scalar values over time, stacked area charts and their variants work well~\cite{Havre2002}.
 However, with higher-dimensional data (as ours is), effective visualizations must be created based on the semantics of the data.
 In domains ranging from personal histories~\cite{Plaisant1996} to treatment plans~\cite{Kosara2001}, such visualizations have been designed by hand, based on the specifics of the domain.
 
-Visualizing high-dimensional data is challenging, because most display surfaces are two-dimensional.
+Visualizing high-dimensional data is difficult, because most display surfaces are two-dimensional.
 The use of 3D displays and/or animation can add at most two dimensions, but encoding the remaining dimensions in a visually perceptible way is challenging.
 Several encodings for such data have been explored.
 Some try to show all dimensions in the visualization.
 The simplest method is to plot all values in a table, which allows the sequential nature of the data to be clearly shown.
 However, some questions cannot be easily answered with tables, so we wish to supplement this view with other representations.
-Multiple surveys of visualization of multidimensional data have been done~\cite{Wong1994,buja1996interactive}, while others survey visualization methods for time-dependent data~\cite{muller2003visualization}.
+Multiple surveys on visualization of multidimensional data have been done~\cite{Wong1994,buja1996interactive}, while others survey visualization methods for time-dependent data~\cite{muller2003visualization}.
 Chernoff faces~\cite{Chernoff73} attempt to encode several dimensions using parts of the human face.
-It and related techniques, in addition to difficulty with accurate perception, do not scale to large number of dimensions.
+It and related techniques, in addition to difficulty with accurate perception, do not scale to a large number of dimensions.
 Parallel coordinates~\cite{Inselberg1991} plot the different dimensions on a set of parallel lines, using lines to connect particular datapoints across the dimensions.
 However, parallel coordinates do not allow for the sequence to be easily represented with position encodings.
 Another approach is to use dimensionality reduction techniques~\cite{Fodor2002}, sacrificing detail to increase interpretability. 
@@ -180,7 +180,7 @@ Linear methods for doing this include Principal Component Analysis (PCA)~\cite{d
 We use MDS in our tool, though other dimensionality reduction techniques could be explored in future work.
 
 A related but distinct visualization problem is that of showing player data.
-Current visualization systems targeted towards helping game developers with the design process mainly target visualizing player data.
+Current visualization systems geared towards helping game developers with the design process mainly target visualizing player data.
 A recent survey describes several such systems~\cite{wallner2013visualization}.
 Our system, in contrast, deals with data of a progression design space itself.
 Sequences of player actions actually have a very similar structure to progressions: a player travels through a high-dimensional state space, and several systems aim to visualize this traversal in a 2D representation.
@@ -192,12 +192,12 @@ While we can use some of these techniques for our problem domain, existing syste
 
 \subsection{Data Format}
 
-Here, we describe our representation of \emph{progression} data, which are as a sequence of stages and concepts associated with them.
+Here, we describe our representation of \emph{progression} data, which are a sequence of stages and concepts associated with them.
 Our system compares two progressions of a particular \emph{game}. The data provides a set of \emph{concepts}, $C = \{c_1, \ldots, c_m\}$, which represent various skills that appear in the game.
-The progression is a sequence of stages $s_1, \ldots, s_n$,
-and each \emph{stage} $s_i$ is described by a feature vector $s_i = \langle w_{i1}, w_{i2}, \ldots, w_{im} \rangle \in \mathbb{R}^m$, where $w_{ij}$ describes ``to what degree'' or ``how much of'' concept $c_j$ appears in stage $s_i$.
+A progression is a sequence of stages $s_1, \ldots, s_n$,
+each \emph{stage} $s_i$ described by a feature vector $s_i = \langle w_{i1}, w_{i2}, \ldots, w_{im} \rangle \in \mathbb{R}^m$, where $w_{ij}$ describes ``to what degree'' or ``how much of'' concept $c_j$ appears in stage $s_i$.
 
-We assume that set set $C$ is semantically meaningful, such that differences in ``concept space'' correspond to differences in how players will experience the game. In particular, we assume that the Euclidean norm of the difference between two stages captures some useful aspect of how different two stages are with regards to their contents. The designer must produce such a set to use the visualization system.
+We assume that the set $C$ is semantically meaningful, such that differences in ``concept space'' correspond to differences in how players will experience the game. In particular, we assume that the Euclidean norm of the difference between two stages captures some useful aspect of how different two stages are with regards to their contents. The designer must produce such a set to use the visualization system.
 
 \subsection{Refraction}
 
@@ -208,7 +208,7 @@ We assume that set set $C$ is semantically meaningful, such that differences in 
 \label{fig:refraction}
 \end{figure}
 
-We first give a brief description of the particular game from which most of are examples are drawn, and use it to illustrate concrete examples of progression \emph{concepts}.
+We first give a brief description of the particular game from which most of our examples are drawn, and use it to illustrate concrete examples of progression \emph{concepts}.
 \emph{Refraction} is an educational puzzle game involving bending, splitting and combining lasers with fractional values.
 It combines mathematical and spatial reasoning challenges.
 A sample puzzle is shown in Figure~\ref{fig:refraction}.
@@ -220,9 +220,8 @@ The concept ``\texttt{source\_power\_fraction}'' describes whether \emph{source 
 The datasets have two alternative concept sets; one is a full set of approximately 60 binary concepts, and the other is a set where those 60 concepts are collapsed into around 15 integer-valued categories.
 Other games have their own concept sets specific to their mechanics and rules.
 
-\subsection{Description of all the stuff in our tool}
-
-Our system provides three different views of progression data, and interactive controls for interacting with these views.
+\subsection{Interface}
+Our system provides three different views of progression data, and interactive controls for manipulating these views.
 
 \begin{figure}[t]
 \centering
@@ -241,25 +240,25 @@ Our system provides three different views of progression data, and interactive c
 \end{figure}
 
 The \emph{grid} is a table with concepts mapped to rows and stages mapped to columns.
-The entry at $(i,j)$ represents the number of times that concept $i$ appears in stage $j$ (higher counts map to more saturated color).
+The cell for a particular stage and concept represents how much that concept is used in that stage (higher counts map to more saturated color).
 Figure~\ref{fig:grid_view} shows grid views for concept progressions from two different games (Refraction and Portal 2).
-When viewing the grid, our system lets the user sort the rows (concepts) according to their order of appearance~\todo{better phrasing}.
+When viewing the grid, our system lets the user sort the rows (concepts) according to their order of appearance in the progression.
 Thus, the concept introduced first in the progression is on the top row, and the one introduced last is assigned the last row.
-
+The rows can also be ordered alphabetically (by concept name), or they can simply reflect the ordering in the data source.
 
 The \emph{projection} view shows MDS projections for progressions, computed using the SMACOF (Scaling by Majorizing a Complicated Function) method~\cite{De2011}.
-Concept occurrence counts from each stage (column) form a $k$-dimensional vector $\langle c_1, c_2, \ldots, c_k \rangle$, and these vectors are projected into 2 dimensions, which are mapped to position.
-Every stage is rendered as a node, and nodes corresponding to adjacent~\todo{better word?} stages are connected via edges.
-Multiple progressions are drawn in the same 2D region, rendered with transparency to mitigate occlusion caused by overlaps.\todo{that does not flow! rewrite later}
+Feature vectors from each stage are projected into 2 dimensions, which are mapped to position.
+Every stage is rendered as a node, and nodes corresponding to adjacent stages are connected via edges.
+Multiple progressions are drawn in the same 2D region, rendered with transparency to mitigate occlusion caused by overlaps.
 
 The user can also select a particular set of concepts and ``drill down'' to see how their occurrences vary precisely over various stages by selecting them in the ``Filter To:'' control.
 When one or more concepts are selected in the filter, our system shows \emph{bar charts}, one chart per concept.
-The concept occurrence counts are mapped to the bar heights, with different stages on the horizontal axis.
+Concept occurrence is mapped to bar height, while the horizontal axis represents different stages.
 When no concepts are selected (or the ``Clear Filters'' button is clicked), the bar charts are hidden and the grid view is shown.
 
 Brushing is supported inside all views by clicking and dragging to specify a rectangular region, which selects all elements inside its extents.
 Selection changes an element's color to red.
-Linking ensures that brushing inside the grid or bar chart view automatically selects the corresponding elements in the projection view (and vice-versa).
+Linking ensures that brushing inside the grid, bar chart or projection view automatically selects the corresponding elements in the other visible views.
 
 \begin{figure*}[t]
 \centering
@@ -270,13 +269,13 @@ Linking ensures that brushing inside the grid or bar chart view automatically se
 
 Figure~\ref{fig:full_screenshot} shows a screenshot of our system being used to compare two progressions for Refraction.
 On the left are sorting controls (used for ordering the rows in the bar chart), and filters below (to select particular concepts for inspection).
-Here, two concepts (\_num\_bender and \_num\_splitter) are selected.
+Here, two concepts (``\texttt{num\_bender}'' and ``\texttt{num\_splitter}'') are selected.
 In the center are bar charts showing the concept occurence counts for the selected concepts (one set of bar charts per progression).
 On the right, we see the MDS projection for both progressions, with some nodes selected via brushing, and corresponding nodes in the bar charts selected via linking.
 
 \section{Discussion}
 
-In this section we discuss anecdotes of insights made possible through use of this too as well as limitations of the system.
+In this section we discuss anecdotes of insights made possible through use of this tool as well as limitations of the system.
 
 \begin{figure}[t]
 \centering
@@ -303,7 +302,7 @@ Another interesting feature that is immediately obvious is that the computer pro
 \end{figure}
 
 Another measure on which we want to compare the progressions is ordering of concepts.
-The tools allows us to easily sort one progression by the ordering of another, in order to make differences readily apparent.
+The tool allows us to easily sort one progression by the ordering of another, in order to make differences readily apparent.
 This is illustrated in Figure~\ref{fig:ordering_orig_gen}, where we compare the same progressions by ordering.
 Here, we use a very detailed breakdown on the concept space.
 We immediately notice several concepts that appear very early in the computer-generated progression but very late in the human-generated progression.
@@ -311,9 +310,9 @@ Additionally, we can clearly see how the games diverge in the later half of the 
 
 \subsection{Limitations}
 
-One significant limitation in the system is that is relies on the concept set to be semantically meaningful so that operations such as taking the Euclidean distance between stages is sensible.
+One significant limitation in the system is that it relies on the concept set to be semantically meaningful so that operations such as taking the Euclidean distance between stages is sensible.
 This is obviously a tall order for game designers to satisfy before they can use the tool, as it is not clear which concepts actually affect player experience without testing.
-One possible remedy for this is to explore unsupervised machine learning techniques to deduce more meaningful concept dimensions, perhaps by clustering of dimensionality reduction techniques.
+One possible remedy for this is to explore unsupervised machine learning techniques to deduce more meaningful concept dimensions, perhaps by clustering or dimensionality reduction techniques.
 If this tool were being used in a later stage of development when player data from user tests are available, that could be used in such an analysis by trying to learn which particular concepts have measurable impact on player experience.
 Another approach would be to allow the designer to interactively organize and categorize concepts while exploring with the tool, rather than beforehand.
 
@@ -323,8 +322,8 @@ While we can (and did) manually create datasets for existing games, games very r
 On the other hand, while educational domains very frequently have wildly different progressions for a particular domain (e.g., high-school algebra), formal representations of these progressions for use in visualization are very rare.
 Therefore, though we believe these activities can be generally applicable to a wide range of games or educational domains, it is difficult to substantiate such a claim without other datasets on which to evaluate the tool's generality.
 
-A minor limitation of our system is that is currently does not scale gracefully to extremely long progressions.
-While progressions with around 100 stages display quickly, MDS takes a long time on significantly longer systems, increasing the time users must wait before being able to interact.
+A minor limitation of our system is that it currently does not scale gracefully to extremely long progressions.
+While progressions with around 100 stages display quickly, computing MDS on significantly longer progressions takes more time, increasing the latency before being able to interact.
 
 \section{Conclusion}
 

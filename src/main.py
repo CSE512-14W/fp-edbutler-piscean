@@ -20,13 +20,11 @@ bookmarks = [
     {'linktext':'Refraction (slow-pace generated vs. fast-pace generated)', 'url':'/static/comparison/index.html?a=infrefr_gen_long_collapsed.json&b=infrefr_gen_highpace_long_collapsed.json'},
     {'linktext':'Refraction (random vs. generated)', 'url':'/static/comparison/index.html?a=infrefr_rand_long_collapsed.json&b=infrefr_gen_long_collapsed.json'},
     {'linktext':'Refraction (original vs. random)', 'url':'/static/comparison/index.html?a=refraction_original_collapsed.json&b=infrefr_rand_long_collapsed.json'},
-    {'linktext':'Test (a vs b)', 'url':'/static/comparison/index.html?a=prog_test.json&b=prog_test2.json'}
 ]
 
 @app.route('/', methods=['GET'])
 def default():
-    dirs = ['/static/%s/index.html' % x for x in sorted(os.listdir('static')) if x.startswith('test_')]
-    return render_template('listing.html', dirs=dirs, bookmarks=bookmarks)
+    return render_template('listing.html', bookmarks=bookmarks)
 
 @app.route('/data/')
 def get_data_list():
