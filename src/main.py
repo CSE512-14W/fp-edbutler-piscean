@@ -20,6 +20,7 @@ bookmarks = [
     {'linktext':'Refraction (slow-pace generated vs. fast-pace generated)', 'url':'/static/comparison/index.html?a=infrefr_gen_long_collapsed.json&b=infrefr_gen_highpace_long_collapsed.json'},
     {'linktext':'Refraction (random vs. generated)', 'url':'/static/comparison/index.html?a=infrefr_rand_long_collapsed.json&b=infrefr_gen_long_collapsed.json'},
     {'linktext':'Refraction (original vs. random)', 'url':'/static/comparison/index.html?a=refraction_original_collapsed.json&b=infrefr_rand_long_collapsed.json'},
+    {'linktext':'Pick datasets manually', 'url':'/static/comparison/index.html'},
 ]
 
 @app.route('/', methods=['GET'])
