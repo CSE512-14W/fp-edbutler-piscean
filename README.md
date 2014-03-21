@@ -4,6 +4,12 @@ Eric Butler, Rahul Banerjee {edbutler,piscean}@uw.edu
 
 This project is an interactive visualization of _progressions_ from games. It allows for two progressions from the same game to be compared.
 
+This is useful because it lets game designers ask important questions about their game without having to playtest and re-design in a labor-intensive loop.
+While playtesting is critical and irreplaceable, certain insights can be gleaned by visualizing progressions in a tool like ours. For instance:
+* How does the concept ordering compare across two progressions?
+* How does the complexity change over the progression?
+* How much of the "design space" is covered by one progression, but not the other? i.e., does one progression neglect some concepts or combinations thereof?
+
 Materials
 ---------
 
