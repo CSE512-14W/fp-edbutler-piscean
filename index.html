@@ -2,83 +2,99 @@
 <html>
   <head>
     <title>Visualizing Progressions for Education and Game Design</title>
+    <link rel="stylesheet" type="text/css" href="http://courses.cs.washington.edu/courses/cse512/14wi/style.css"/>
   </head>
   <body>
-    <h1>Visualizing Progressions for Education and Game Design</h1>
+    <div class='content wider'>
+      <div class='title'>
+        <a href="http://courses.cs.washington.edu/courses/cse512/14wi/"><strong>CSE512</strong></a>
+          Projects
+          <small>(Winter 2014)</small>
+      </div>
+      <br/>
 
-    <p>Eric Butler, Rahul Banerjee</p>
+      <div class='pub' data-spy="scroll" data-target=".navbar">
+        <h1 class="title">Visualizing Progressions for Education and Game Design</h1>
+        <div class="authors">
+          <a href="http://www.ericbutler.net">Eric Butler</a>,
+          <a href="http://homes.cs.washington.edu/~banerjee/">Rahul Banerjee</a>
+        </div>
 
-    <img src="paper/images/full_screenshot.png">
+        <div class="figure">
+          <img src="paper/images/full_screenshot.png" width="100%">
+          <div class="caption">
+            <p>A visualization system to compare two differnt progressions from the education game <a href="http://centerforgamescience.org/portfolio/refraction/"><em>Refraction</em></a>.
+          </div>
+        </div>
 
-    <p>This project is an interactive visualization of <em>progressions</em> from games. It allows for two progressions from the same game to be compared.</p>
-    This is useful because it lets game designers ask important questions about their game without having to playtest and re-design in a labor-intensive loop.
-    While playtesting is critical and irreplaceable, certain insights can be gleaned by visualizing progressions in a tool like ours. For instance:
-    <ul>
-    <li>How does the concept ordering compare across two progressions?</li>
-    <li>How does the complexity change over the progression? </li>
-    <li>How much of the "design space" is covered by one progression, but not the other? i.e., does one progression neglect some concepts or combinations thereof?</li>
-    </ul>
-    </p>
+        <p>This project is an interactive visualization of <em>progressions</em> from games. It allows for two progressions from the same game to be compared.</p>
+        This is useful because it lets game designers ask important questions about their game without having to playtest and re-design in a labor-intensive loop.
+        While playtesting is critical and irreplaceable, certain insights can be gleaned by visualizing progressions in a tool like ours. For instance:
+          <ul>
+            <li>How does the concept ordering compare across two progressions?</li>
+            <li>How does the complexity change over the progression? </li>
+            <li>How much of the "design space" is covered by one progression, but not the other? i.e., does one progression neglect some concepts or combinations thereof?</li>
+          </ul>
+        </p>
 
-    <h2>Materials</h2>
+        <h2>Materials</h2>
 
-    <p><a href="final/paper-edbutler-piscean.pdf">Paper</a>
-    <a href="final/poster-edbutler-piscean.pdf">Poster</a></p>
+        <div class="links">
+          <a href="final/paper-edbutler-piscean.pdf" >Paper</a>
+          |
+          <a href="final/poster-edbutler-piscean.pdf" >Poster</a>
+          |
+          <a href="https://github.com/CSE512-14W/fp-edbutler-piscean/">Code</a>
+        </div>
 
-    <h2>How to Run</h2>
+        <h2>How to Run</h2>
 
-    <p>The program is web-based, but requires a python web server backend to do the MDS computation. The primary python packages it requires are:
-    <ul>
-      <li> <a href="http://flask.pocoo.org/">Flask</a> </li>
-      <li> numpy </li>
-      <li> scipy </li>
-      <li> matplotlib </li>
-      <li> <a href="http://scikit-learn.org/stable/">scikit-learn</a> </li>
-    </ul>
-    These packages are all available in pip, and can be installed with:
-    <pre>
-    pip install -r req.txt
-    </pre>
+        <p>The program is web-based, but requires a python web server backend to do the MDS computation. The primary python packages it requires are:
+          <ul>
+            <li> <a href="http://flask.pocoo.org/">Flask</a> </li>
+            <li> numpy </li>
+            <li> scipy </li>
+            <li> matplotlib </li>
+            <li> <a href="http://scikit-learn.org/stable/">scikit-learn</a> </li>
+          </ul>
+          These packages are all available in pip, and can be installed with:
+          <pre>
+          pip install -r req.txt
+          </pre>
+        </p>
 
-    The entry point is:
-    <pre>
-    src/main.py
-    </pre>
+        <p>The entry point is in <code>src/main.py</code>.</p>
 
-    It will launch a webserver on:
-    <pre>
-    localhost:5000
-    </pre></p>
+        <p>
+          It will launch a webserver on
+          <code>
+          localhost:5000
+          </code>
+        </p>
 
-    <p>So, for example, on a recent ubuntu distro, the program can be setup and run with:
-    <pre>
-    sudo apt-get install python-virtualenv
-    virtualenv venv/
-    source venv/bin/activate
-    pip install -r req.txt
-    cd src/
-    ./main.py
-    </pre>
-    Then, in a browser, open:
-    <pre>
-    http://localhost:5000/
-    </pre>
-    </p>
+        <p>So, for example, on a recent ubuntu distro, the program can be setup and run with:
+          <pre>
+          sudo apt-get install python-virtualenv
+          virtualenv venv/
+          source venv/bin/activate
+          pip install -r req.txt
+          cd src/
+          ./main.py
+          </pre>
+          Then, in a browser, open <code>http://localhost:5000/</code>
+        </p>
 
-    <p>Several datasets are included in:
-    <pre>
-    src/data/
-    </pre>
-    The main page has links to a few interesting example comparisons.
-    The last link ("pick datasets manually") lets the user select datasets from a dropdown (automatically generated by scanning the data folder)</p>
+        <p>Several datasets are included in <code>src/data/</code>. The main page has links to a few interesting example comparisons. The last link ("pick datasets manually") lets the user select datasets from a dropdown (automatically generated by scanning the data folder)</p>
 
-    <h2>Example Use Case</h2>
-    <ul>
-    <li> Load up the "Refraction (original vs. generated)" dataset </li>
-    <li> Under the "Controls" on the left-hand side, in the drop-down list called "Sort By:", select the "#1 Intro Order". This sorts the concepts in the two grids according to order of appearance in the first progression </li>
-    <li> Under the "Controls" on the left-hand side, in the drop-down list called "Filter To:", select the "num_splitter". The grid views are replaced with the details of the "num_splitter" concept across the two progressions. Multiple concepts can be (de)selected by holding down the "Control" (or "Command" on Mac) key while clicking them.</li>
-    <li> Clear the selection(s) by clicking the "Clear Filters" button on the bottom left. This hides the bar charts and shows the grid views.</li>
-    </ul>
+        <h2>Example Use Case</h2>
+        <ul>
+          <li> Load up the "Refraction (original vs. generated)" dataset.</li>
+          <li> Under the "Controls" on the left-hand side, in the drop-down list called "Sort By:", select the "#1 Intro Order". This sorts the concepts in the two grids according to order of appearance in the first progression.</li>
+          <li> Under the "Controls" on the left-hand side, in the drop-down list called "Filter To:", select the "num_splitter". The grid views are replaced with the details of the "num_splitter" concept across the two progressions. Multiple concepts can be (de)selected by holding down the "Control" (or "Command" on Mac) key while clicking them.</li>
+          <li> Clear the selection(s) by clicking the "Clear Filters" button on the bottom left. This hides the bar charts and shows the grid views.</li>
+        </ul>
+      </div>
+    </div>
   </body>
 </html>
 
